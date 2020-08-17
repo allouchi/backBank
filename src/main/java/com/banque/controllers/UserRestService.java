@@ -21,6 +21,7 @@ import com.banque.config.HttpStatusProperties;
 import com.banque.entites.User;
 import com.banque.exceptions.UserNotFoundException;
 import com.banque.services.ServiceUser;
+import com.banque.util.UtilDate;
 
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.log4j.Log4j2;
@@ -59,6 +60,9 @@ public class UserRestService {
 			throw new UserNotFoundException(message);
 		}
 		
+		String dateAffichage = UtilDate.UtilDateMethode(userInBase.getLastConnection());
+		userInBase.setLastConnection(dateAffichage);
+				
 		log.info("User ok with mail {}", userInBase.getMail());
 		
 		return ResponseEntity.ok(userInBase);		
@@ -79,12 +83,12 @@ public class UserRestService {
 	@ApiOperation(value = "Met à jour la date de la dernière connexion de l'utilisateur !!!")
 	public ResponseEntity<String> updateUserDateLastConnexion(@RequestBody String userId) {				
 		
-		LocalDateTime now = LocalDateTime.now();
+		LocalDateTime dateSysteme = LocalDateTime.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
-        String formatDateTime = now.format(formatter);		
-		serviceUser.updateUserDateLastConnection(formatDateTime, Long.parseLong(userId));
+        String dateTime = dateSysteme.format(formatter);		
+		serviceUser.updateUserDateLastConnection(dateTime, Long.parseLong(userId));
 		
-		return ResponseEntity.ok("Dernière date de connexion : " + formatDateTime);		
+		return ResponseEntity.ok("Dernière date de connexion : " + dateTime);		
 	}
 	
 
