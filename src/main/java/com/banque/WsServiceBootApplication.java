@@ -17,10 +17,10 @@ public class WsServiceBootApplication {
 		SpringApplication.run(WsServiceBootApplication.class, args);
 	}	
 	
-	@Bean
-	public Function<String, String> upperCase() {
-		return t -> t.toUpperCase();
-	}
+//	@Bean
+//	public Function<String, String> upperCase() {
+//		return t -> t.toUpperCase();
+//	}
 	
 }
 
