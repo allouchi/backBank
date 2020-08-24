@@ -60,7 +60,7 @@ public class UserRestService {
 			throw new UserNotFoundException(message);
 		}
 		
-		String dateAffichage = UtilDate.UtilDateMethode(userInBase.getLastConnection());
+		String dateAffichage = UtilDate.utilDateMethode(userInBase.getLastConnection());
 		userInBase.setLastConnection(dateAffichage);
 				
 		log.info("User ok with mail {}", userInBase.getMail());

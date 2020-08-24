@@ -10,7 +10,7 @@ public class UtilDate {
 
 	}
 
-	public static String UtilDateMethode(String dateDerniereConnexion) {
+	public static String utilDateMethode(String dateDerniereConnexion) {
 
 		DateTimeFormatter pattenDate = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm", Locale.FRENCH);
 
